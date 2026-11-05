@@ -1,0 +1,308 @@
+/* ====================================================
+   OCULTAR CONTENEDOR EN PANTALLA
+   ==================================================== */
+.seccion-impresion-etiquetas {
+  display: none;
+}
+
+/* ====================================================
+   ESTILOS DE ETIQUETA - MEDIDAS AMPLIADAS (9.7 cm x 4.3 cm)
+   ==================================================== */
+.etiqueta-container {
+  width: 97mm;
+  height: 43mm;            /* 🌟 Aumentado de 35mm a 43mm */
+  max-width: 97mm;
+  max-height: 43mm;
+  border: 1.5px solid #000000;
+  border-radius: 3px;
+  padding: 2mm 3mm;        /* 🌟 Mayor espacio interno */
+  box-sizing: border-box !important;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000000;
+  overflow: hidden;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* --- FORMATO NORMAL / CONDICION --- */
+.formato-normal .header {
+  font-size: 10pt;          /* 🌟 Aumentado (antes 8.5pt) */
+  font-weight: 800;
+  text-transform: uppercase;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 2px;
+  line-height: 1.1;
+  max-height: 8.5mm;       /* 🌟 Permite texto más grande de 2 líneas */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+.formato-normal .sub-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9.5pt;        /* 🌟 Aumentado (antes 8.5pt) */
+  font-weight: bold;
+  margin: 1mm 0;
+  color: #111111;
+}
+
+.formato-normal .body-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex: 1;
+  border-top: 1px dashed #aaaaaa;
+  padding-top: 1mm;
+}
+
+.formato-normal .col-izq {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 100%;
+  font-size: 6.5pt;
+  border-right: 1px solid #dddddd;
+  padding-right: 2mm;
+  box-sizing: border-box;
+}
+
+.formato-normal .col-der {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.formato-normal .titulo-seccion {
+  font-size: 9pt;          /* 🌟 Aumentado (antes 8pt) */
+  font-weight: bold;
+  color: #222222;
+  line-height: 1;
+}
+
+.formato-normal .precio-container {
+  display: flex;
+  align-items: baseline;
+  line-height: 0.9;
+  margin: 1px 0;
+}
+
+.formato-normal .simbolo-peso {
+  font-size: 13pt;         /* 🌟 Aumentado (antes 11pt) */
+  font-weight: bold;
+  margin-right: 1px;
+}
+
+.formato-normal .precio-grande {
+  font-size: 20pt;         /* 🌟 Aumentado (antes 16pt) */
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.formato-normal .pie-texto {
+  font-size: 9pt;          /* 🌟 Aumentado (antes 8pt) */
+  font-weight: bold;
+}
+
+.formato-normal .pie-derecho {
+  font-size: 9pt;          /* 🌟 Aumentado (antes 8pt) */
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  margin-top: 1px;
+}
+
+/* --- FORMATO PACK --- */
+.formato-pack {
+  border: 2px solid #000000;
+}
+
+.formato-pack .header {
+  font-size: 10pt;         /* 🌟 Aumentado */
+  font-weight: 800;
+  text-transform: uppercase;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 2px;
+  line-height: 1.1;
+  max-height: 8.5mm;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+.formato-pack .top-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 7.5pt;        /* 🌟 Aumentado (antes 6.5pt) */
+  font-weight: bold;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 1px;
+}
+
+.formato-pack .sub-header-ci {
+  font-size: 7.5pt;
+  font-weight: bold;
+  margin-top: 1px;
+}
+
+.formato-pack .sin-borde {
+  border-bottom: none !important;
+  margin-top: 1px;
+}
+
+.formato-pack .bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5mm;
+  flex: 1;
+}
+
+.formato-pack .box-pack {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 3px 6px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.formato-pack .texto-pack {
+  font-size: 11.5pt;       /* 🌟 Aumentado (antes 10pt) */
+  font-weight: 900;
+  line-height: 1;
+}
+
+.formato-pack .referencia {
+  font-size: 6pt;
+  text-transform: uppercase;
+}
+
+.formato-pack .box-precio {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.formato-pack .precio-titulo {
+  font-size: 9pt;          /* 🌟 Aumentado */
+  font-weight: bold;
+  line-height: 1;
+}
+
+.formato-pack .precio-container {
+  display: flex;
+  align-items: baseline;
+  line-height: 0.9;
+}
+
+.formato-pack .simbolo-peso {
+  font-size: 13pt;
+  font-weight: bold;
+}
+
+.formato-pack .precio-grande {
+  font-size: 20pt;         /* 🌟 Aumentado */
+  font-weight: 900;
+  line-height: 0.9;
+}
+
+.formato-pack .precio-sin-iva-pack {
+  font-size: 6.5pt;
+  font-weight: bold;
+  text-align: right;
+  line-height: 1.1;
+  margin-top: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.formato-pack .label-sin-iva {
+  font-size: 5.5pt;
+  color: #333333;
+  font-weight: bold;
+}
+
+.formato-pack .valor-sin-iva {
+  font-size: 6.5pt;
+  font-weight: bold;
+}
+
+/* ====================================================
+   REGLAS DE IMPRESIÓN MULTI-PÁGINA (12 ETIQUETAS POR HOJA A4)
+   ==================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0 !important; /* Desactiva márgenes del navegador para control total */
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  .seccion-impresion-portal {
+    display: block !important;
+  }
+
+  /* 🌟 Contenedor de hoja A4 independiente */
+  .hoja-a4 {
+    width: 210mm !important;
+    height: 297mm !important;
+    max-height: 297mm !important;
+    box-sizing: border-box !important;
+    padding-top: 15mm !important;   /* 🌟 Espacio superior garantizado en produccion */
+    padding-bottom: 5mm !important;
+    padding-left: 5mm !important;
+    padding-right: 5mm !important;
+    page-break-after: always !important; /* Salto estricto de hoja */
+    break-after: page !important;
+    overflow: hidden !important;
+  }
+
+  .grid-etiquetas {
+    display: grid !important;
+    grid-template-columns: repeat(2, 97mm) !important;
+    grid-auto-rows: 43mm !important; /* 🌟 Fila ajustada a 43mm */
+    gap: 2mm 4mm !important;
+    justify-content: center !important;
+    align-content: start !important;
+    box-sizing: border-box !important;
+  }
+
+  .etiqueta-container {
+    width: 97mm !important;
+    height: 43mm !important;
+    max-width: 97mm !important;
+    max-height: 43mm !important;
+    padding: 2mm 3mm !important;
+    box-sizing: border-box !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    overflow: hidden !important;
+  }
+}

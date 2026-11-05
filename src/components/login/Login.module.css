@@ -1,0 +1,115 @@
+/* Importamos la tipografía corporativa Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700;1,900&display=swap');
+
+.loginWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  padding: 20px;
+  background-color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.loginCard {
+  width: 100%;
+  max-width: 420px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px -5px rgba(80, 145, 30, 0.12), 0 8px 10px -6px rgba(109, 190, 42, 0.08);
+  border: 2px solid #6DBE2A;
+  overflow: hidden;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.loginHeader {
+  background-color: #6DBE2A; /* Verde Base Super A */
+  padding: 30px 20px;
+  text-align: center;
+  border-bottom: 4px solid #50911E; /* Línea Verde Oscuro */
+}
+
+.loginHeader h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.5px;
+  text-transform: lowercase; /* Mantiene la estética super a */
+}
+
+.loginHeader p {
+  margin: 6px 0 0 0;
+  color: #F2F9EC;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.loginForm {
+  padding: 30px 25px;
+}
+
+.errorAlert {
+  background-color: #fef2f2;
+  border: 1px solid #fca5a5;
+  color: #dc2626;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 14px;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 900;
+  font-style: italic;
+  transition: background-color 0.2s, transform 0.1s;
+  box-shadow: 0 4px 10px rgba(109, 190, 42, 0.25);
+}
+
+.submitButtonActive {
+  background-color: #6DBE2A;
+  cursor: pointer;
+}
+
+.submitButtonActive:hover {
+  background-color: #50911E;
+}
+
+.submitButtonActive:active {
+  transform: scale(0.98);
+}
+
+.submitButtonDisabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.footerText {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.75rem;
+  color: #64748b;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Animación de entrada para que aparezca suavemente */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

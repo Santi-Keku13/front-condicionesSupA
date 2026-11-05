@@ -1,0 +1,813 @@
+/* Importamos la tipografía corporativa Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700;1,900&display=swap');
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+   ========================================================= */
+.container {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #1e293b;
+}
+
+.title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  color: #50911E; /* Verde Oscuro Super A */
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #6DBE2A; /* Verde Base Super A */
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   PANEL DE ESCANEO
+   ========================================================= */
+.scanPanel {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 15px;
+  align-items: flex-end;
+  background-color: #F2F9EC; /* Fondo Claro Verde */
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #D1E7BD;
+  margin-bottom: 25px;
+}
+
+.scanGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.scanLabel {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #50911E;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.scanInput {
+  padding: 14px 16px;
+  font-size: 1.05rem;
+  border-radius: 8px;
+  border: 1.5px solid #A2D574;
+  background-color: #ffffff;
+  color: #1e293b;
+  transition: all 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+}
+
+.scanInput:focus {
+  border-color: #6DBE2A;
+  box-shadow: 0 0 0 3px rgba(109, 190, 42, 0.2);
+  outline: none;
+}
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+.btnPrimary {
+  padding: 14px 24px;
+  font-size: 0.95rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  color: #ffffff;
+  background-color: #6DBE2A;
+  border: 1px solid #6DBE2A;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(109, 190, 42, 0.2);
+}
+
+.btnPrimary:hover:not(:disabled) {
+  background-color: #50911E;
+  border-color: #50911E;
+  transform: translateY(-1px);
+}
+
+.btnPrimary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btnGhost {
+  padding: 12px 20px;
+  font-size: 0.9rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  color: #50911E;
+  background-color: #ffffff;
+  border: 1.5px solid #6DBE2A;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btnGhost:hover:not(:disabled) {
+  background-color: #6DBE2A;
+  color: #ffffff;
+}
+
+.btnGhost:disabled {
+  border-color: #cbd5e1;
+  color: #cbd5e1;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   CABECERA DE LA LISTA
+   ========================================================= */
+.listHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.listTitle {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 1.4rem;
+  color: #50911E;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.counter {
+  display: inline-block;
+  background-color: #6DBE2A;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 900;
+  padding: 3px 10px;
+  border-radius: 20px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.listActions {
+  display: flex;
+  gap: 10px;
+}
+
+/* =========================================================
+   ESTADO VACÍO
+   ========================================================= */
+.emptyState {
+  border: 2px dashed #D1E7BD;
+  border-radius: 12px;
+  padding: 50px 20px;
+  text-align: center;
+  color: #64748b;
+  background-color: #F2F9EC;
+}
+
+.emptyState p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #50911E;
+  margin: 0 0 6px;
+}
+
+.emptyState span {
+  font-size: 0.9rem;
+}
+
+/* =========================================================
+   TABLA
+   ========================================================= */
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #E2E8F0;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.thead {
+  background-color: #F2F9EC;
+  border-bottom: 2px solid #6DBE2A;
+}
+
+.th {
+  color: #50911E;
+  padding: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  text-align: left;
+}
+
+.tr {
+  border-bottom: 1px solid #f1f5f9;
+  transition: background-color 0.15s;
+}
+
+.tr:hover {
+  background-color: #F8FAF0;
+}
+
+.trError {
+  background-color: #fef2f2;
+}
+
+.td {
+  padding: 14px 15px;
+  color: #334155;
+  font-size: 0.95rem;
+}
+
+.tdBold {
+  font-weight: 700;
+  color: #50911E;
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+}
+
+.errorText {
+  color: #dc2626;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.precioFinal {
+  font-size: 1.05rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  color: #50911E;
+}
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+.badgeCondicion {
+  display: inline-block;
+  background-color: #fef3c7;
+  color: #92400e;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  max-width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badgePack {
+  display: inline-block;
+  background-color: #1E293B;
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+
+.badgeNormal {
+  display: inline-block;
+  background-color: #f1f5f9;
+  color: #475569;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   BOTÓN ELIMINAR
+   ========================================================= */
+.btnDelete {
+  background: transparent;
+  border: none;
+  color: #dc2626;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background-color 0.15s;
+}
+
+.btnDelete:hover {
+  background-color: #fee2e2;
+}
+
+/* =========================================================
+   HEADER CON BADGE DE CACHE
+   ========================================================= */
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 25px;
+}
+
+.cacheBadge {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background-color: #F2F9EC;
+  border: 1px solid #D1E7BD;
+  border-radius: 10px;
+  padding: 10px 16px;
+}
+
+.cacheDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #6DBE2A;
+  box-shadow: 0 0 0 4px rgba(109, 190, 42, 0.2);
+  flex-shrink: 0;
+}
+
+.cacheInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cacheLabel {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #50911E;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cacheValue {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1e293b;
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+}
+
+.cacheDivider {
+  width: 1px;
+  height: 30px;
+  background-color: #A2D574;
+}
+
+.btnRefresh {
+  background: none;
+  border: 1.5px solid #6DBE2A;
+  color: #50911E;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btnRefresh:hover:not(:disabled) {
+  background-color: #6DBE2A;
+  color: #ffffff;
+}
+
+.btnRefresh:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+/* =========================================================
+   ESTADOS DE CARGA / ERROR
+   ========================================================= */
+.loadingState,
+.errorState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 80px 20px;
+  text-align: center;
+  color: #64748b;
+}
+
+.errorState p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #dc2626;
+  margin: 0;
+}
+
+.errorState span {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #F2F9EC;
+  border-top-color: #6DBE2A;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* =========================================================
+   TOASTS
+   ========================================================= */
+.toastContainer {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  min-width: 300px;
+  max-width: 450px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-left: 5px solid #64748b;
+  animation: slideIn 0.3s ease-out forwards;
+  font-family: inherit;
+}
+
+.toastSuccess { border-left-color: #6DBE2A; }
+.toastError   { border-left-color: #dc2626; }
+.toastWarning { border-left-color: #d97706; }
+.toastInfo    { border-left-color: #3b82f6; }
+
+.toastContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.toastTitle {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1e293b;
+}
+
+.toastMessage {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.toastClose {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.toastClose:hover {
+  color: #475569;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 640px) {
+  .title { font-size: 1.6rem; }
+  .scanPanel {
+    grid-template-columns: 1fr;
+  }
+  .listHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .listActions {
+    justify-content: flex-end;
+  }
+}
+
+/* =========================================================
+   MODAL DE CONFIRMACIÓN
+   ========================================================= */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 16px;
+  box-sizing: border-box;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.modalContent {
+  background-color: #ffffff;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 460px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid #D1E7BD;
+  animation: slideUp 0.2s ease-out;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalHeader {
+  background-color: #6DBE2A;
+  color: #ffffff;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.modalHeader h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+  padding: 0;
+}
+
+.closeButton:hover {
+  opacity: 1;
+}
+
+.modalBody {
+  padding: 20px;
+}
+
+.modalBlockFull {
+  background-color: #F2F9EC;
+  padding: 14px 18px;
+  border-radius: 8px;
+  border: 1px solid #D1E7BD;
+}
+
+.modalBlockLabel {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #50911E;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.modalBlockValue {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #0f172a;
+  line-height: 1.5;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 20px;
+  background-color: #f8fafc;
+  border-top: 1px solid #E2E8F0;
+}
+
+.btnDanger {
+  padding: 12px 22px;
+  font-size: 0.9rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  color: #ffffff;
+  background-color: #dc2626;
+  border: 1px solid #dc2626;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btnDanger:hover {
+  background-color: #b91c1c;
+  border-color: #b91c1c;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(15px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* =========================================================
+   CONTROLES DE CANTIDAD
+   ========================================================= */
+.thCenter {
+  text-align: center;
+}
+
+.cantidadControl {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  border: 1.5px solid #A2D574;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.cantidadBtn {
+  width: 34px;
+  height: 34px;
+  border: none;
+  background-color: #F2F9EC;
+  color: #50911E;
+  font-size: 1.15rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s, color 0.15s;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1;
+  padding: 0;
+}
+
+.cantidadBtn:hover:not(:disabled) {
+  background-color: #6DBE2A;
+  color: #ffffff;
+}
+
+.cantidadBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.cantidadInput {
+  width: 48px;
+  height: 34px;
+  border: none;
+  border-left: 1px solid #A2D574;
+  border-right: 1px solid #A2D574;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e293b;
+  background-color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
+  -moz-appearance: textfield;
+  padding: 0;
+}
+
+.cantidadInput::-webkit-outer-spin-button,
+.cantidadInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.cantidadInput:focus {
+  background-color: #F2F9EC;
+}
+
+/* =========================================================
+   REGLAS EXCLUSIVAS DE IMPRESIÓN (12 ETIQUETAS POR HOJA A4)
+   ========================================================= */
+@media print {
+  /* Oculta la interfaz del colector al mandar a imprimir */
+  .container,
+  .toastContainer,
+  .modalOverlay {
+    display: none !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 0 !important;
+  }
+
+  :global(body) {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #ffffff !important;
+  }
+
+  :global(.seccion-impresion-portal) {
+    display: block !important;
+  }
+
+  :global(.hoja-a4) {
+    width: 210mm !important;
+    height: 297mm !important;
+    max-height: 297mm !important;
+    box-sizing: border-box !important;
+    padding-top: 15mm !important;
+    padding-bottom: 5mm !important;
+    padding-left: 5mm !important;
+    padding-right: 5mm !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    overflow: hidden !important;
+  }
+
+  :global(.grid-etiquetas) {
+    display: grid !important;
+    grid-template-columns: repeat(2, 97mm) !important;
+    grid-auto-rows: 43mm !important;
+    gap: 2mm 4mm !important;
+    justify-content: center !important;
+    align-content: start !important;
+    box-sizing: border-box !important;
+  }
+}

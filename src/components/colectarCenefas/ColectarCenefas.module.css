@@ -1,0 +1,853 @@
+/* Importamos la tipografía corporativa Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700;1,900&display=swap');
+
+/* ============================================================
+   CONTENEDOR PRINCIPAL
+   ============================================================ */
+.container {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  margin: 0;
+  overflow-x: hidden;
+  font-family: 'Montserrat', sans-serif;
+  color: #1e293b;
+}
+
+.title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  color: #50911E; /* Verde Oscuro Super A */
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #6DBE2A; /* Verde Base Super A */
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   HEADER (fila con título + cache badge)
+   ============================================================ */
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   CACHE BADGE
+   ============================================================ */
+.cacheBadge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  background: #F2F9EC; /* Fondo Verde Claro */
+  border: 1px solid #D1E7BD;
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+.cacheDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6DBE2A;
+  box-shadow: 0 0 0 4px rgba(109, 190, 42, 0.2);
+  flex-shrink: 0;
+}
+
+.cacheInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cacheLabel {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #50911E;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cacheValue {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.cacheDivider {
+  width: 1px;
+  height: 24px;
+  background: #A2D574;
+}
+
+/* ============================================================
+   SELECTOR DE TIPO DE CENEFA
+   ============================================================ */
+.tipoSelector {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 12px 0 18px 0;
+  padding: 10px 14px;
+  background: #F2F9EC;
+  border: 1px solid #D1E7BD;
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+.tipoLabel {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #50911E;
+  margin-right: 6px;
+  text-transform: uppercase;
+}
+
+.tipoBtn {
+  padding: 8px 14px;
+  border: 1.5px solid #A2D574;
+  background: #ffffff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #475569;
+  transition: all 0.15s ease;
+}
+
+.tipoBtn:hover {
+  background: #F2F9EC;
+  color: #50911E;
+}
+
+.tipoBtnActive {
+  background: #6DBE2A;
+  color: #ffffff;
+  border-color: #6DBE2A;
+  font-weight: 900;
+  font-style: italic;
+  box-shadow: 0 2px 8px rgba(109, 190, 42, 0.3);
+}
+
+/* ============================================================
+   PANEL DE ESCANEO
+   ============================================================ */
+.scanPanel {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-left: 5px solid #6DBE2A;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.scanGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.scanLabel {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #50911E;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.scanInput {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  font-size: 1rem;
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+  color: #0f172a;
+  background: #F2F9EC;
+  border: 2px solid #A2D574;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.scanInput:focus {
+  border-color: #6DBE2A;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(109, 190, 42, 0.2);
+}
+
+.scanInput::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* ============================================================
+   BOTONES
+   ============================================================ */
+.btnPrimary {
+  padding: 10px 20px;
+  background: #6DBE2A;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 900;
+  font-style: italic;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(109, 190, 42, 0.25);
+}
+
+.btnPrimary:hover:not(:disabled) {
+  background: #50911E;
+}
+
+.btnPrimary:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btnPrimary:disabled {
+  background: #cbd5e1;
+  color: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btnGhost {
+  padding: 10px 20px;
+  background: #ffffff;
+  color: #50911E;
+  border: 1.5px solid #6DBE2A;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.btnGhost:hover:not(:disabled) {
+  background: #6DBE2A;
+  color: #ffffff;
+}
+
+.btnGhost:disabled {
+  background: #f1f5f9;
+  color: #cbd5e1;
+  border-color: #cbd5e1;
+  cursor: not-allowed;
+}
+
+.btnDanger {
+  padding: 10px 20px;
+  background: #dc2626;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 900;
+  font-style: italic;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btnDanger:hover {
+  background: #b91c1c;
+}
+
+.btnRefresh {
+  padding: 6px 12px;
+  background: #ffffff;
+  color: #50911E;
+  border: 1.5px solid #6DBE2A;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btnRefresh:hover:not(:disabled) {
+  background: #6DBE2A;
+  color: #ffffff;
+}
+
+.btnRefresh:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btnDelete {
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.btnDelete:hover {
+  background: #fee2e2;
+}
+
+/* ============================================================
+   CABECERA DE LA LISTA
+   ============================================================ */
+.listHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin: 20px 0 12px 0;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #6DBE2A;
+  flex-wrap: wrap;
+}
+
+.listTitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  font-style: italic;
+  color: #50911E;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.counter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 10px;
+  background: #6DBE2A;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  border-radius: 16px;
+}
+
+.listActions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ============================================================
+   TABLA
+   ============================================================ */
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #E2E8F0;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px;
+}
+
+.thead {
+  background-color: #F2F9EC;
+  border-bottom: 2px solid #6DBE2A;
+}
+
+.th {
+  color: #50911E;
+  padding: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  text-align: left;
+}
+
+.thCenter {
+  text-align: center !important;
+}
+
+.tr {
+  border-bottom: 1px solid #f1f5f9;
+  cursor: default;
+}
+
+.tr:hover {
+  background-color: #F8FAF0;
+}
+
+.trError {
+  background-color: #fef2f2;
+}
+
+.td {
+  padding: 14px 15px;
+  color: #334155;
+  font-size: 0.95rem;
+}
+
+.tdBold {
+  font-weight: 700;
+  color: #50911E;
+}
+
+.errorText {
+  color: #dc2626;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.precioFinal {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  color: #50911E;
+  font-size: 1rem;
+}
+
+.badgeCondicion {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 12px;
+}
+
+.badgePack {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #1E293B;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 900;
+  border-radius: 12px;
+}
+
+.badgeNormal {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #e2e8f0;
+  color: #475569;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 12px;
+}
+
+/* ============================================================
+   CONTROLES DE CANTIDAD
+   ============================================================ */
+.cantidadControl {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1.5px solid #A2D574;
+  border-radius: 6px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.cantidadBtn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: #F2F9EC;
+  color: #50911E;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.cantidadBtn:hover:not(:disabled) {
+  background: #6DBE2A;
+  color: #ffffff;
+}
+
+.cantidadBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.cantidadInput {
+  width: 40px;
+  border: none;
+  background: #ffffff;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0f172a;
+  outline: none;
+  font-family: 'Montserrat', sans-serif;
+  -moz-appearance: textfield;
+}
+
+.cantidadInput::-webkit-outer-spin-button,
+.cantidadInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ============================================================
+   ESTADOS (loading / error / empty)
+   ============================================================ */
+.loadingState,
+.errorState,
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  color: #64748b;
+  gap: 12px;
+}
+
+.errorState p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  font-style: italic;
+  color: #dc2626;
+  margin: 0;
+}
+
+.emptyState p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  font-style: italic;
+  color: #50911E;
+  margin: 0;
+}
+
+.emptyState span {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #F2F9EC;
+  border-top-color: #6DBE2A;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.modalContent {
+  background-color: #ffffff;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 550px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #D1E7BD;
+  animation: slideUp 0.2s ease-out;
+  overflow: hidden;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalHeader {
+  background-color: #6DBE2A;
+  color: #ffffff;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.modalHeader h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.closeButton:hover {
+  opacity: 1;
+}
+
+.modalBody {
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #ffffff;
+}
+
+.modalBlockFull {
+  grid-column: span 2;
+  background-color: #F2F9EC;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #D1E7BD;
+}
+
+.modalBlockLabel {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #50911E;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.modalBlockValue {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 20px;
+  border-top: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(15px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ============================================================
+   TABS
+   ============================================================ */
+.tabsContainer {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 25px;
+  border-bottom: 3px solid #6DBE2A;
+  width: 100%;
+  padding-left: 10px;
+}
+
+.tabLink {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  font-style: italic;
+  color: #64748b;
+  background: none !important;
+  border: none !important;
+  padding: 0 0 12px 0;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+}
+
+.tabLink:hover {
+  color: #50911E;
+}
+
+.tabLinkActive {
+  color: #50911E !important;
+  border-bottom: 3px solid #6DBE2A !important;
+  margin-bottom: -3px;
+}
+
+/* ============================================================
+   TOASTS
+   ============================================================ */
+.toastContainer {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  min-width: 300px;
+  max-width: 450px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-left: 5px solid #64748b;
+  animation: slideIn 0.3s ease-out forwards;
+  font-family: inherit;
+}
+
+.toastSuccess { border-left-color: #6DBE2A; }
+.toastError   { border-left-color: #dc2626; }
+.toastWarning { border-left-color: #d97706; }
+.toastInfo    { border-left-color: #3b82f6; }
+
+.toastContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.toastTitle {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1e293b;
+}
+
+.toastMessage {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.toastClose {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.toastClose:hover {
+  color: #475569;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+/* ============================================================
+   REGLAS DE IMPRESIÓN EXCLUSIVAS PARA CENEFA TIPO 5 (CONDICIÓN)
+   ============================================================ */
+@media print {
+  /* Ocultar interfaz dinámica */
+  .container {
+    display: none !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 0 !important;
+  }
+
+  :global(body) {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #ffffff !important;
+  }
+
+  :global(.seccion-impresion-portal) {
+    display: block !important;
+  }
+
+  /* Distribución para Cenefa Tipo 5 (3 cenefas de 180x65mm por hoja A4) */
+  :global(.seccion-impresion-portal.grid-tipo-5) {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    padding-top: 10mm !important;
+    box-sizing: border-box !important;
+  }
+
+  :global(.seccion-impresion-portal.grid-tipo-5) :global(.cenefa-tipo-5) {
+    width: 180mm !important;
+    height: 65mm !important;
+    margin-bottom: 20mm !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  :global(.seccion-impresion-portal.grid-tipo-5) :global(.cenefa-tipo-5:nth-child(3n)) {
+    margin-bottom: 0 !important;
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+}
