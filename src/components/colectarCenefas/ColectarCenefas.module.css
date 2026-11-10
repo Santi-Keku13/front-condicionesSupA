@@ -803,51 +803,12 @@
 }
 
 /* ============================================================
-   REGLAS DE IMPRESIÓN EXCLUSIVAS PARA CENEFA TIPO 5 (CONDICIÓN)
+   IMPRESIÓN
+   Solo se oculta la interfaz. La distribución de las cenefas
+   (tamaños, posiciones, saltos de hoja) vive en Cenefa.css
    ============================================================ */
 @media print {
-  /* Ocultar interfaz dinámica */
   .container {
     display: none !important;
-  }
-
-  @page {
-    size: A4 portrait;
-    margin: 0 !important;
-  }
-
-  :global(body) {
-    margin: 0 !important;
-    padding: 0 !important;
-    background-color: #ffffff !important;
-  }
-
-  :global(.seccion-impresion-portal) {
-    display: block !important;
-  }
-
-  /* Distribución para Cenefa Tipo 5 (3 cenefas de 180x65mm por hoja A4) */
-  :global(.seccion-impresion-portal.grid-tipo-5) {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    width: 210mm !important;
-    height: 297mm !important;
-    padding-top: 10mm !important;
-    box-sizing: border-box !important;
-  }
-
-  :global(.seccion-impresion-portal.grid-tipo-5) :global(.cenefa-tipo-5) {
-    width: 180mm !important;
-    height: 65mm !important;
-    margin-bottom: 20mm !important;
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
-  }
-
-  :global(.seccion-impresion-portal.grid-tipo-5) :global(.cenefa-tipo-5:nth-child(3n)) {
-    margin-bottom: 0 !important;
-    page-break-after: always !important;
-    break-after: page !important;
   }
 }

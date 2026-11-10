@@ -7,6 +7,9 @@ import { ENDPOINTS } from "../../config";
 const CACHE_TTL_MS = 1000 * 60 * 60 * 6;
 const CANTIDAD_MAX = 99;
 
+// Cuántas cenefas entran por hoja según el tipo (las que van sobre máscara)
+const CENEFAS_POR_HOJA = { 3: 3, 4: 3, 5: 3 };
+
 // ---------- HELPERS ----------
 const formatoPrecio = (n) =>
   Number(n || 0).toLocaleString("es-AR", {
@@ -280,6 +283,17 @@ const ColectarCenefas = () => {
     return result;
   }, [itemsValidos, tipoCenefa]);
 
+  // Agrupa las cenefas en hojas (un contenedor de impresión por hoja)
+  const hojas = useMemo(() => {
+    const porHoja = CENEFAS_POR_HOJA[tipoCenefa];
+    if (!porHoja) return [cenefasMapeadas];
+    const out = [];
+    for (let i = 0; i < cenefasMapeadas.length; i += porHoja) {
+      out.push(cenefasMapeadas.slice(i, i + porHoja));
+    }
+    return out;
+  }, [cenefasMapeadas, tipoCenefa]);
+
   // ============================================================
   // RENDER
   // ============================================================
@@ -481,11 +495,15 @@ const ColectarCenefas = () => {
 
       {/* ---------- SECCIÓN DE IMPRESIÓN (PORTAL EN BODY) ---------- */}
       {createPortal(
-        <div className={`seccion-impresion-portal grid-tipo-${tipoCenefa}`}>
-          {cenefasMapeadas.map((c, i) => (
-            <Cenefa key={i} tipo={c.tipo} datos={c.datos} />
+        <>
+          {hojas.map((hoja, h) => (
+            <div key={h} className={`seccion-impresion-portal grid-tipo-${tipoCenefa}`}>
+              {hoja.map((c, i) => (
+                <Cenefa key={i} tipo={c.tipo} datos={c.datos} />
+              ))}
+            </div>
           ))}
-        </div>,
+        </>,
         document.body
       )}
 

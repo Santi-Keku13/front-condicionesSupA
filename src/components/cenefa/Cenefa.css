@@ -1,8 +1,5 @@
-/* Importamos la tipografía corporativa Montserrat */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700;1,900&display=swap');
-
 /* ============================================================
-   BASE SUPER A
+   BASE
    ============================================================ */
 .cenefa {
   position: relative;
@@ -10,16 +7,16 @@
   overflow: hidden;
   page-break-inside: avoid;
   break-inside: avoid;
-  background: #6DBE2A; /* Verde base Super A */
-  color: #1E293B;
-  font-family: 'Montserrat', sans-serif;
+  background: #e6003c; /* rojo base */
+  color: #2a1a5e; /* azul oscuro */
+  font-family: 'Arial', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-/* Fondo decorativo: líneas diagonales sutiles verdes */
+/* Fondo decorativo: ondas + líneas diagonales + puntos */
 .cenefa-fondo {
   position: absolute;
   inset: 0;
@@ -27,7 +24,7 @@
     repeating-linear-gradient(
       135deg,
       transparent 0 8px,
-      rgba(242, 249, 236, 0.8) 8px 12px,
+      rgba(255, 200, 0, 0.9) 8px 12px,
       transparent 12px 20px
     );
   background-size: 100% 100%, 40% 40%, 30% 30%, 100% 100%;
@@ -38,7 +35,7 @@
   z-index: 0;
 }
 
-/* Puntos sutiles en el fondo */
+/* "Ondas" con SVG embebido */
 .cenefa-fondo::before {
   content: '';
   position: absolute;
@@ -57,8 +54,8 @@
   z-index: 1;
   background: #ffffff;
   border-radius: 18px;
-  border: 3px solid #50911E; /* Verde Oscuro */
-  box-shadow: 0 0 0 3px #ffffff, 0 0 0 5px #50911E;
+  border: 3px solid #2a1a5e;
+  box-shadow: 0 0 0 3px #ffffff, 0 0 0 5px #2a1a5e;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -68,12 +65,10 @@
 }
 
 .cenefa-descripcion {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  font-style: italic;
+  font-weight: 800;
   text-transform: uppercase;
   line-height: 1.1;
-  color: #1E293B;
+  color: #000;
 }
 
 .cenefa-precios {
@@ -82,13 +77,12 @@
   justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
-  color: #1E293B;
+  color: #000;
 }
 
 .cenefa-antes {
   font-size: 0.75em;
-  color: #64748B;
-  font-family: 'Montserrat', sans-serif;
+  color: #333;
 }
 
 .cenefa-antes s {
@@ -97,10 +91,8 @@
 }
 
 .cenefa-ahora {
-  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
-  font-style: italic;
-  color: #50911E;
+  color: #000;
 }
 
 .cenefa-ahora strong {
@@ -112,7 +104,7 @@
   justify-content: center;
   gap: 12px;
   font-size: 0.65em;
-  color: #1E293B;
+  color: #000;
   font-family: 'Courier New', monospace;
   flex-wrap: wrap;
 }
@@ -121,16 +113,15 @@
 .cenefa-oferta {
   position: absolute;
   z-index: 2;
-  background: #6DBE2A; /* Verde Super A */
-  color: #ffffff;
-  font-family: 'Montserrat', sans-serif;
+  background: #ffcc00;
+  color: #2a1a5e;
   font-weight: 900;
   font-style: italic;
   letter-spacing: 1px;
   padding: 4px 14px;
   border-radius: 4px;
   transform: rotate(-3deg);
-  box-shadow: 3px 3px 0 rgba(80, 145, 30, 0.3);
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.15);
   clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%);
 }
 
@@ -143,7 +134,7 @@
   padding: 2mm;
   position: relative;
   overflow: hidden;
-  background: #6DBE2A;
+  background: #e6003c;
   box-sizing: border-box;
 }
 
@@ -154,8 +145,8 @@
   height: 70mm;
   background: #ffffff;
   border-radius: 5mm;
-  border: 2px solid #50911E;
-  box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px #50911E;
+  border: 2px solid #2a1a5e;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px #2a1a5e;
   padding: 3mm 4mm;
   box-sizing: border-box;
   display: flex;
@@ -168,12 +159,10 @@
 
 .cenefa-tipo-1 .cenefa-descripcion {
   font-size: 18px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  font-style: italic;
+  font-weight: 800;
   text-transform: uppercase;
   line-height: 1.05;
-  color: #1E293B;
+  color: #000;
   text-align: center;
   max-width: 100%;
   overflow: hidden;
@@ -188,13 +177,12 @@
   align-items: center;
   justify-content: center;
   gap: 1mm;
-  color: #1E293B;
+  color: #000;
 }
 
 .cenefa-tipo-1 .cenefa-antes {
   font-size: 15px;
-  color: #64748B;
-  font-family: 'Montserrat', sans-serif;
+  color: #555;
 }
 
 .cenefa-tipo-1 .cenefa-antes s {
@@ -204,10 +192,8 @@
 
 .cenefa-tipo-1 .cenefa-ahora {
   font-size: 32px;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
-  font-style: italic;
-  color: #50911E;
+  color: #000;
   line-height: 1;
 }
 
@@ -220,7 +206,7 @@
   justify-content: center;
   gap: 12px;
   font-size: 9px;
-  color: #1E293B;
+  color: #000;
   font-family: 'Courier New', monospace;
   flex-wrap: wrap;
   border-top: 1px solid rgba(0, 0, 0, 0.15);
@@ -245,7 +231,7 @@
   padding: 1.2mm;
   position: relative;
   overflow: hidden;
-  background: #6DBE2A;
+  background: #e6003c;
   box-sizing: border-box;
 }
 
@@ -256,8 +242,8 @@
   height: 100%;
   background: #ffffff;
   border-radius: 4mm;
-  border: 1.5px solid #50911E;
-  box-shadow: 0 0 0 1.5px #ffffff, 0 0 0 2.5px #50911E;
+  border: 1.5px solid #2a1a5e;
+  box-shadow: 0 0 0 1.5px #ffffff, 0 0 0 2.5px #2a1a5e;
   padding: 1.5mm 3mm;
   box-sizing: border-box;
   display: flex;
@@ -279,13 +265,11 @@
 
 .cenefa-descripcion-t2 {
   font-size: 13px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  font-style: italic;
+  font-weight: 800;
   text-transform: uppercase;
   text-align: center;
   line-height: 1.05;
-  color: #1E293B;
+  color: #000;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -300,14 +284,13 @@
   justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
-  color: #1E293B;
+  color: #000;
   line-height: 1;
 }
 
 .cenefa-antes-t2 {
   font-size: 13px;
-  color: #64748B;
-  font-family: 'Montserrat', sans-serif;
+  color: #333;
 }
 
 .cenefa-antes-t2 s {
@@ -317,10 +300,8 @@
 
 .cenefa-ahora-t2 {
   font-size: 19px;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
-  font-style: italic;
-  color: #50911E;
+  color: #000;
   white-space: nowrap;
 }
 
@@ -335,7 +316,7 @@
   font-family: 'Courier New', monospace;
   font-size: 11px;
   font-weight: 700;
-  color: #1E293B;
+  color: #000;
   padding-top: 0.8mm;
   border-top: 0.8px solid rgba(0, 0, 0, 0.2);
   flex-shrink: 0;
@@ -350,9 +331,8 @@
   z-index: 2;
   bottom: 1mm;
   right: 1mm;
-  background: #6DBE2A;
-  color: #ffffff;
-  font-family: 'Montserrat', sans-serif;
+  background: #ffcc00;
+  color: #2a1a5e;
   font-weight: 900;
   font-style: italic;
   letter-spacing: 0.5px;
@@ -360,7 +340,7 @@
   padding: 2px 10px;
   border-radius: 3px;
   transform: rotate(-4deg);
-  box-shadow: 2px 2px 0 rgba(80, 145, 30, 0.2);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
   clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
 }
 
@@ -396,12 +376,10 @@
 
 .cenefa-tipo-3 .cenefa-descripcion {
   font-size: 25px;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
-  font-style: italic;
   text-transform: uppercase;
   line-height: 1.05;
-  color: #1E293B;
+  color: #000;
   text-align: center;
   max-width: 100%;
   overflow: hidden;
@@ -417,14 +395,13 @@
   justify-content: center;
   gap: 14px;
   flex-wrap: wrap;
-  color: #1E293B;
+  color: #000;
   line-height: 1;
 }
 
 .cenefa-tipo-3 .cenefa-antes {
   font-size: 22px;
-  color: #64748B;
-  font-family: 'Montserrat', sans-serif;
+  color: #444;
 }
 
 .cenefa-tipo-3 .cenefa-antes s {
@@ -434,10 +411,8 @@
 
 .cenefa-tipo-3 .cenefa-ahora {
   font-size: 85px;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
-  font-style: italic;
-  color: #50911E;
+  color: #000;
   line-height: 1;
   white-space: nowrap;
 }
@@ -448,7 +423,7 @@
   gap: 20px;
   font-size: 15px;
   font-weight: 700;
-  color: #1E293B;
+  color: #000;
   font-family: 'Courier New', monospace;
   flex-wrap: wrap;
   border-top: 1.5px solid rgba(0, 0, 0, 0.15);
@@ -493,12 +468,10 @@
 
 .cenefa-tipo-4 .cenefa-descripcion {
   font-size: 22px;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
-  font-style: italic;
   text-transform: uppercase;
   line-height: 1.05;
-  color: #1E293B;
+  color: #000;
   text-align: center;
   width: 100%;
   max-width: 100%;
@@ -513,7 +486,7 @@
   width: 90%;
   font-size: 15px;
   font-weight: 700;
-  color: #1E293B;
+  color: #000;
   font-family: 'Courier New', monospace;
   border-bottom: 1.5px solid rgba(0, 0, 0, 0.2);
   padding-bottom: 0.8mm;
@@ -529,10 +502,8 @@
 
 .cenefa-tipo-4 .cenefa-ahora-gigante {
   font-size: 95px;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
-  font-style: italic;
-  color: #50911E;
+  color: #000;
   line-height: 1;
   white-space: nowrap;
 }
@@ -543,7 +514,7 @@
 }
 
 /* ============================================================
-   TIPO 5: 180 mm x 65 mm — Hoja Preimpresa Condición Comercial
+   🌟 TIPO 5: 180 mm x 65 mm — Hoja Preimpresa Condición Comercial
    ============================================================ */
 .cenefa-tipo-5 {
   width: 180mm;
@@ -570,12 +541,10 @@
 
 .cenefa-condicion-descripcion {
   font-size: 20px;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
-  font-style: italic;
   text-transform: uppercase;
   line-height: 1.1;
-  color: #1E293B;
+  color: #000000;
   text-align: center;
   width: 100%;
   max-height: 44px;
@@ -603,18 +572,15 @@
 
 .cenefa-label-regular {
   font-size: 12px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-style: italic;
-  color: #64748B;
+  font-weight: 800;
+  color: #475569;
   letter-spacing: 0.5px;
 }
 
 .cenefa-precio-regular {
   font-size: 30px;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
-  color: #1E293B;
+  color: #1e293b;
   line-height: 1;
 }
 
@@ -627,20 +593,16 @@
 
 .cenefa-leyenda-condicion {
   font-size: 15px;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
-  font-style: italic;
-  color: #50911E;
+  color: #000000;
   text-transform: uppercase;
   margin-bottom: 2px;
 }
 
 .cenefa-precio-condicion {
   font-size: 64px;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
-  font-style: italic;
-  color: #50911E;
+  color: #000000;
   line-height: 0.85;
   white-space: nowrap;
 }
@@ -651,7 +613,7 @@
   width: 100%;
   font-size: 12px;
   font-weight: 700;
-  color: #1E293B;
+  color: #000000;
   font-family: 'Courier New', monospace;
   border-top: 1px dashed #cbd5e1;
   padding-top: 1.5mm;
@@ -680,7 +642,9 @@
     margin: 0 !important;
     padding: 0 !important;
     width: 210mm !important;
-    height: 297mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
     background: #ffffff !important;
   }
 
@@ -708,52 +672,60 @@
     background: #ffffff !important;
   }
 
-  /* ---------- TIPOS 3, 4 Y 5: ESTRUCTURA A4 BASE ---------- */
+  /* ---------- TIPOS 3, 4 Y 5: UNA HOJA A4 POR CONTENEDOR ----------
+     Posiciones fijas (absolute): no dependen de flex, space-between
+     ni de transforms, así que cada hoja queda idéntica a la primera. */
   .seccion-impresion-portal.grid-tipo-3,
   .seccion-impresion-portal.grid-tipo-4,
   .seccion-impresion-portal.grid-tipo-5 {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    align-items: center !important;
+    display: block !important;
+    position: relative !important;
     width: 210mm !important;
-    height: 297mm !important;
-    padding: 17mm 0 7mm 0 !important;
+    height: 296mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
     box-sizing: border-box !important;
     page-break-after: always !important;
     break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* La última hoja no fuerza salto (evita hoja en blanco al final) */
+  .seccion-impresion-portal.grid-tipo-3:last-child,
+  .seccion-impresion-portal.grid-tipo-4:last-child,
+  .seccion-impresion-portal.grid-tipo-5:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
   }
 
   .seccion-impresion-portal.grid-tipo-3 .cenefa-tipo-3,
   .seccion-impresion-portal.grid-tipo-4 .cenefa-tipo-4,
   .seccion-impresion-portal.grid-tipo-5 .cenefa-tipo-5 {
+    position: absolute !important;
+    left: 15mm !important;            /* (210 - 180) / 2 */
     width: 180mm !important;
     height: 65mm !important;
     margin: 0 !important;
+    transform: none !important;
     box-sizing: border-box !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
   }
 
-  /* ---------- CALIBRACIÓN EXCLUSIVA CONDICIÓN COMERCIAL (TIPO 5) ---------- */
-  /* Primera cenefa Tipo 5: baja 17mm */
-  .seccion-impresion-portal.grid-tipo-5 .cenefa-tipo-5:nth-child(3n+1) {
-    transform: translateY(17mm) !important;
-  }
+  /* ---------- TIPOS 3 Y 4: posiciones verticales ---------- */
+  .seccion-impresion-portal.grid-tipo-3 .cenefa-tipo-3:nth-child(3n+1),
+  .seccion-impresion-portal.grid-tipo-4 .cenefa-tipo-4:nth-child(3n+1) { top: 17mm !important; }
 
-  /* Segunda cenefa Tipo 5: baja 8mm */
-  .seccion-impresion-portal.grid-tipo-5 .cenefa-tipo-5:nth-child(3n+2) {
-    transform: translateY(8mm) !important;
-  }
+  .seccion-impresion-portal.grid-tipo-3 .cenefa-tipo-3:nth-child(3n+2),
+  .seccion-impresion-portal.grid-tipo-4 .cenefa-tipo-4:nth-child(3n+2) { top: 121mm !important; }
 
-  /* Tercera cenefa Tipo 5: baja 1mm respecto a la posición anterior */
-  .seccion-impresion-portal.grid-tipo-5 .cenefa-tipo-5:nth-child(3n) {
-    transform: translateY(1mm) !important;
-  }
-
-  /* ---------- TERCERA CENEFA PARA TIPOS 3 Y 4 ---------- */
   .seccion-impresion-portal.grid-tipo-3 .cenefa-tipo-3:nth-child(3n),
-  .seccion-impresion-portal.grid-tipo-4 .cenefa-tipo-4:nth-child(3n) {
-    transform: translateY(-4mm) !important;
-  }
+  .seccion-impresion-portal.grid-tipo-4 .cenefa-tipo-4:nth-child(3n) { top: 221mm !important; }
+
+  /* ---------- TIPO 5 (Condición Comercial): posiciones verticales ---------- */
+  .seccion-impresion-portal.grid-tipo-5 .cenefa-tipo-5:nth-child(3n+1) { top: 34mm !important; }
+  .seccion-impresion-portal.grid-tipo-5 .cenefa-tipo-5:nth-child(3n+2) { top: 129mm !important; }
+  .seccion-impresion-portal.grid-tipo-5 .cenefa-tipo-5:nth-child(3n)   { top: 226mm !important; }
 }
