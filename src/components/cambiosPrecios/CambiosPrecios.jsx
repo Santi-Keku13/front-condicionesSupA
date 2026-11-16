@@ -27,6 +27,9 @@ function CambiosPrecios({
   const [filtroFamilia, setFiltroFamilia] = useState('TODOS');
   const [filtroSubFamilia, setFiltroSubFamilia] = useState('TODOS');
 
+  // --- ESTADOS PARA SELECCIÓN Y CANTIDADES DE IMPRESIÓN ---
+  const [configImpresion, setConfigImpresion] = useState({});
+
   const [paginaActual, setPaginaActual] = useState(1);
   const filasPorPagina = 50;
 
@@ -181,6 +184,77 @@ function CambiosPrecios({
     paginaActual
   ]);
 
+  // --- SINCRONIZAR CONFIGURACIÓN DE IMPRESIÓN ---
+  useEffect(() => {
+    setConfigImpresion(prev => {
+      const nuevoEstado = { ...prev };
+      let huboCambios = false;
+
+      datosFiltradosYPagina.todosFiltrados.forEach(item => {
+        const id = String(item.IDArticulo).trim();
+        if (!nuevoEstado[id]) {
+          nuevoEstado[id] = { seleccionado: true, cantidad: 1 };
+          huboCambios = true;
+        }
+      });
+
+      return huboCambios ? nuevoEstado : prev;
+    });
+  }, [datosFiltradosYPagina.todosFiltrados]);
+
+  // --- HANDLERS DE SELECCIÓN Y CANTIDAD ---
+  const handleToggleItemImpresion = (idArticulo) => {
+    const id = String(idArticulo).trim();
+    setConfigImpresion(prev => {
+      const actual = prev[id] || { seleccionado: true, cantidad: 1 };
+      return {
+        ...prev,
+        [id]: { ...actual, seleccionado: !actual.seleccionado }
+      };
+    });
+  };
+
+  const handleCambiarCantidadImpresion = (idArticulo, nuevaCantidad) => {
+    const id = String(idArticulo).trim();
+    const cantValida = Math.max(1, Math.min(999, Number(nuevaCantidad) || 1));
+    setConfigImpresion(prev => {
+      const actual = prev[id] || { seleccionado: true, cantidad: 1 };
+      return {
+        ...prev,
+        [id]: { ...actual, seleccionado: true, cantidad: cantValida }
+      };
+    });
+  };
+
+  const todosSeleccionados = useMemo(() => {
+    if (datosFiltradosYPagina.todosFiltrados.length === 0) return false;
+    return datosFiltradosYPagina.todosFiltrados.every(item => {
+      const id = String(item.IDArticulo).trim();
+      return configImpresion[id]?.seleccionado ?? true;
+    });
+  }, [datosFiltradosYPagina.todosFiltrados, configImpresion]);
+
+  const handleToggleTodos = () => {
+    const nuevoValor = !todosSeleccionados;
+    setConfigImpresion(prev => {
+      const actualizado = { ...prev };
+      datosFiltradosYPagina.todosFiltrados.forEach(item => {
+        const id = String(item.IDArticulo).trim();
+        const cantActual = actualizado[id]?.cantidad || 1;
+        actualizado[id] = { seleccionado: nuevoValor, cantidad: cantActual };
+      });
+      return actualizado;
+    });
+  };
+
+  const totalEtiquetasAImprimir = useMemo(() => {
+    return datosFiltradosYPagina.todosFiltrados.reduce((acc, item) => {
+      const id = String(item.IDArticulo).trim();
+      const conf = configImpresion[id] || { seleccionado: true, cantidad: 1 };
+      return conf.seleccionado ? acc + conf.cantidad : acc;
+    }, 0);
+  }, [datosFiltradosYPagina.todosFiltrados, configImpresion]);
+
   const totalPaginas = Math.ceil(datosFiltradosYPagina.total / filasPorPagina);
 
   const formatearFecha = (strFecha) => {
@@ -213,6 +287,7 @@ function CambiosPrecios({
   };
 
   const exportarAPDF = () => {
+    if (totalEtiquetasAImprimir === 0) return;
     window.print();
   };
 
@@ -340,16 +415,16 @@ function CambiosPrecios({
         <div className={styles.filterGroup} style={{ justifyContent: 'flex-end', flexDirection: 'row', gap: '8px' }}>
           <button 
             onClick={exportarAPDF}
-            disabled={datosFiltradosYPagina.total === 0}
+            disabled={totalEtiquetasAImprimir === 0}
             style={{
-              backgroundColor: datosFiltradosYPagina.total === 0 ? '#94a3b8' : '#2563eb',
+              backgroundColor: totalEtiquetasAImprimir === 0 ? '#94a3b8' : '#2563eb',
               color: 'white',
               border: 'none',
               padding: '8px 12px',
               borderRadius: '6px',
               fontWeight: 'bold',
               fontSize: '0.85rem',
-              cursor: datosFiltradosYPagina.total === 0 ? 'not-allowed' : 'pointer',
+              cursor: totalEtiquetasAImprimir === 0 ? 'not-allowed' : 'pointer',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -359,7 +434,7 @@ function CambiosPrecios({
             }}
             title="Imprimir Etiquetas dinámicas de Góndola"
           >
-              🖨️ Imprimir Etiquetas
+              🖨️ Imprimir ({totalEtiquetasAImprimir})
           </button>
 
           <button 
@@ -393,6 +468,18 @@ function CambiosPrecios({
         <table className={styles.table}>
           <thead className={styles.thead}>
             <tr>
+              {/* COLUMNA CHECKBOX MAESTRO */}
+              <th className={styles.th} style={{ width: '40px', textAlign: 'center' }}>
+                <input 
+                  type="checkbox"
+                  checked={todosSeleccionados}
+                  onChange={handleToggleTodos}
+                  title="Seleccionar / Deseleccionar todos los filtrados"
+                  style={{ cursor: 'pointer', width: '16px', height: '16px' }}
+                />
+              </th>
+              {/* COLUMNA CANTIDAD DE COPIAS */}
+              <th className={styles.th} style={{ width: '105px', textAlign: 'center' }}>Copias</th>
               <th className={styles.th}>Código Art.</th>
               <th className={styles.th}>Scanner</th>
               <th className={styles.th}>Descripción</th>
@@ -407,9 +494,89 @@ function CambiosPrecios({
             {datosFiltradosYPagina.paginados.map((item, idx) => {
               const numLista = Number(String(item.Lista).replace(/\D/g, ''));
               const esOferta = numLista === 11;
+              const idArt = String(item.IDArticulo).trim();
+              const conf = configImpresion[idArt] || { seleccionado: true, cantidad: 1 };
 
               return (
-                <tr key={idx} className={styles.tr} onClick={() => onOpenModal({ type: 'PRECIO', data: item })}>
+                <tr 
+                  key={idx} 
+                  className={styles.tr} 
+                  onClick={() => onOpenModal({ type: 'PRECIO', data: item })}
+                  style={{
+                    backgroundColor: conf.seleccionado ? undefined : '#f8fafc',
+                    opacity: conf.seleccionado ? 1 : 0.65,
+                    transition: 'opacity 0.15s'
+                  }}
+                >
+                  {/* CELDA CHECKBOX INDIVIDUAL */}
+                  <td 
+                    className={styles.td} 
+                    style={{ textAlign: 'center' }} 
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <input 
+                      type="checkbox"
+                      checked={conf.seleccionado}
+                      onChange={() => handleToggleItemImpresion(idArt)}
+                      style={{ cursor: 'pointer', width: '16px', height: '16px' }}
+                    />
+                  </td>
+
+                  {/* CELDA SELECTOR DE CANTIDAD */}
+                  <td 
+                    className={styles.td} 
+                    style={{ textAlign: 'center' }} 
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <div style={{ display: 'inline-flex', alignItems: 'center', border: '1px solid #cbd5e1', borderRadius: '4px', overflow: 'hidden', background: '#fff' }}>
+                      <button
+                        type="button"
+                        onClick={() => handleCambiarCantidadImpresion(idArt, conf.cantidad - 1)}
+                        disabled={!conf.seleccionado || conf.cantidad <= 1}
+                        style={{
+                          border: 'none',
+                          background: '#f1f5f9',
+                          padding: '2px 7px',
+                          cursor: (!conf.seleccionado || conf.cantidad <= 1) ? 'not-allowed' : 'pointer',
+                          fontWeight: 'bold',
+                          color: '#334155'
+                        }}
+                      >
+                        -
+                      </button>
+                      <input
+                        type="number"
+                        min="1"
+                        max="999"
+                        value={conf.cantidad}
+                        onChange={(e) => handleCambiarCantidadImpresion(idArt, e.target.value)}
+                        style={{
+                          width: '38px',
+                          textAlign: 'center',
+                          border: 'none',
+                          fontSize: '0.85rem',
+                          fontWeight: '600',
+                          outline: 'none',
+                          MozAppearance: 'textfield'
+                        }}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => handleCambiarCantidadImpresion(idArt, conf.cantidad + 1)}
+                        style={{
+                          border: 'none',
+                          background: '#f1f5f9',
+                          padding: '2px 7px',
+                          cursor: 'pointer',
+                          fontWeight: 'bold',
+                          color: '#334155'
+                        }}
+                      >
+                        +
+                      </button>
+                    </div>
+                  </td>
+
                   <td className={styles.td}>{item.IDArticulo}</td>
                   <td className={styles.td} style={{ fontFamily: 'monospace' }}>{item.Scanner || '—'}</td>
                   <td className={`${styles.td} ${styles.tdBold}`}>{item.Descripcion}</td>
@@ -442,7 +609,7 @@ function CambiosPrecios({
             })}
             {datosFiltradosYPagina.total === 0 && (
               <tr>
-                <td colSpan="8" className={styles.td} style={{ textAlign: 'center', padding: '40px', color: '#64748b' }}>
+                <td colSpan="10" className={styles.td} style={{ textAlign: 'center', padding: '40px', color: '#64748b' }}>
                   ⚠️ No se encontraron modificaciones con los filtros aplicados.
                 </td>
               </tr>
@@ -468,12 +635,19 @@ function CambiosPrecios({
           {(() => {
             const LIMITE_POR_HOJA = 12;
 
-            const etiquetasMapeadas = datosFiltradosYPagina.todosFiltrados.map((item) => {
+            const etiquetasMapeadas = [];
+
+            datosFiltradosYPagina.todosFiltrados.forEach((item) => {
+              const idBuscar = String(item.IDArticulo).trim();
+              const conf = configImpresion[idBuscar] || { seleccionado: true, cantidad: 1 };
+
+              // Omitir los que no estén tildados
+              if (!conf.seleccionado) return;
+
               const precioListaBase = Number(item.PrecioVentaTotal) || 0;
               const esUnidad = Number(item.IDPresentacion) === 1;
               const tipoEtiquetaCalculado = esUnidad ? 'NORMAL' : 'PACK';
 
-              const idBuscar = String(item.IDArticulo).trim();
               const condicionAsociada = mapaCondiciones.get(idBuscar);
 
               const porcentajeDescuento = Number(condicionAsociada?.PorDescRec) || 0;
@@ -490,7 +664,7 @@ function CambiosPrecios({
 
               const precioSinIvaCalculado = precioListaBase / 1.21;
 
-              return {
+              const etiquetaObj = {
                 tipo: tipoEtiquetaCalculado,
                 datos: {
                   descripcion: item.Descripcion || 'SIN DESCRIPCIÓN',
@@ -507,6 +681,11 @@ function CambiosPrecios({
                   compraMinima: tieneCondicion ? (condicionAsociada.Desde || '') : ''
                 }
               };
+
+              // Repetir la etiqueta según la cantidad configurada
+              for (let i = 0; i < conf.cantidad; i++) {
+                etiquetasMapeadas.push(etiquetaObj);
+              }
             });
 
             const paginas = [];
